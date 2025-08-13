@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Hand Beads</title>
+  <link rel="stylesheet" href="beadspurchase.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Hand Beads</h2>
+    <p><strong>Item:</strong> Hand Beads </p>
+    <p><strong>Price:</strong> GHS 20.00</p>
+
+  <form id="purchaseForm">
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+    <label for="address">Delivery Address:</label>
+    <textarea id="address" name="address" rows="4" placeholder="Enter your full address"></textarea>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="e.g. 0500474913">
+
+    <div class="total" id="totalCost">Total: ₵20.00</div>
+
+    <button type="submit">Purchase Now</button>
+  </form>
+  </div>
+
+<script>
+  const price = 20.00; 
+
+  const quantityInput = document.getElementById('quantity');
+  const totalCostDisplay = document.getElementById('totalCost');
+  const form = document.getElementById('purchaseForm');
+
+  function updateTotal() {
+    const quantity = parseInt(quantityInput.value) || 0;
+    const total = quantity * price;
+    totalCostDisplay.textContent = `Total: ₵${total.toFixed(2)}`;
+  }
+
+  quantityInput.addEventListener('input', updateTotal);
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const quantity = quantityInput.value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const total = quantity * price;
+
+    alert(`Purchase Summary:
+- Quantity: ${quantity} 
+- Total Cost: ₵${total.toFixed(2)}
+- Address: ${address}
+- Phone: ${phone}
+
+Thank you for your order!`);
+
+  });
+
+  updateTotal();
+</script>
+
+</body>
+</html>
+
+
+
